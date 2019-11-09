@@ -203,25 +203,6 @@ class FpsClock {
         this.fps = Math.round(calc);
     }
 }	
-class CanvasTypeWriter {
-    constructor(text, speed) {
-        this.text = text;
-        this.speed = speed;
-        this.type = '';
-        this.speedCount;
-        this.index = 0;
-    }
-
-    updateText(){
-        speedCount++;
-        if (this.speedCount >= this.speed)
-        {
-            this.index++;
-            this.type += text.charAt(this.index);
-            this.speedCount = 0;
-        }
-    }
-}
 
 class ElementTypeWriter {
     constructor(x, y){
@@ -287,16 +268,21 @@ class DialogueSet {
         this.textContainer = document.getElementById("heroEngineTextContainer");
         this.optionsContainer = document.getElementById("heroEngineOptionContainer");
         this.options = [];
-        this.options[0] = undefined;
-        this.options[1] = undefined;
-        this.options[2] = undefined;
-        this.options[3] = undefined;
+        this.options[0] = document.getElementById("HeroEngineOption1");
+        this.options[1] = document.getElementById("HeroEngineOption2");
+        this.options[2] = document.getElementById("HeroEngineOption3");
+        this.options[3] = document.getElementById("HeroEngineOption4");
+
+        this.options[0].style.display = 'none';
+        this.options[1].style.display = 'none';
+        this.options[2].style.display = 'none';
+        this.options[3].style.display = 'none';
 
         this.currentNode = "NodeName";
 
         this.events = new EventEmitter();
         this.events.registerEvent("NODEEND")
-        this.events.addEventListener("NODEEND",this.setCurrentNode);
+        this.events.addEventListener("NODEEND",this.displayOptions.bind(this));
 
         this.parseNodeMap(setText);
     }
@@ -309,8 +295,10 @@ class DialogueSet {
         this.nodeMap["NodeName"] = new DialogueNode(nodeMapText, this.textSpeed, this.events);
     }
 
-    setCurrentNode(nodeName) {
-
+    displayOptions() {
+        this.options.forEach(function(option) {
+            option.style.display = "block"
+          });
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
