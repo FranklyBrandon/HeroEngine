@@ -3,7 +3,7 @@ class Game {
         this.height = height;
         this.width = width;
 
-        this.input = new Input();
+        //this.input = new Input();
         this.drawManager = new DrawManager(height, width);
         this.events = new EventEmitter();
 

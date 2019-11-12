@@ -6,7 +6,7 @@ class DialogueNode {
     this.finished = false;
     this.events = events;
 
-    this.typeWriter = new TypeWriter(120,20);
+    this.typeWriter = new TypeWriter(0,20);
     this.queue = this.parseText(nodeText);
 
     }

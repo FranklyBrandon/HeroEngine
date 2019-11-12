@@ -1,4 +1,4 @@
-class ElementTypeWriter {
+class TypeWriter {
     constructor(x, y){
         this.type = document.createElement("p");  
         this.type.setAttribute("id", "elTypeWriter");
