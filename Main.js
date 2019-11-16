@@ -1,6 +1,5 @@
 var game = new Game(200, 100, 30);
-//game.input.InitKeyboard();
-//game.input.AddKey('D');
+game.UseTextEngine();
 
 class Scene1 extends Scene {
     constructor(){

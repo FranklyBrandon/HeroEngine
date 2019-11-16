@@ -2,7 +2,7 @@ class DrawManager {
     constructor(x,y){
         this.canvasWidth = x;
         this.canvasHeight = y;
-        this.canvas = document.getElementById("heroEngineCanvas");
+        this.canvas = document.getElementById("HeroEngineCanvas");
         this.context = this.canvas.getContext("2d");
     }
 

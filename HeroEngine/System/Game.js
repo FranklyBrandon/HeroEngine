@@ -1,10 +1,10 @@
 class Game {
-    constructor(height, width, targetFPS) {
-        this.height = height;
-        this.width = width;
+    constructor(width, height, targetFPS) {
 
-        //this.input = new Input();
-        this.drawManager = new DrawManager(height, width);
+        this.width = width;
+        this.height = height
+        this.bootstraper = new DocumentBootstrap(height, width);
+
         this.events = new EventEmitter();
 
         this.events.registerEvent('STEP');
@@ -64,5 +64,13 @@ class Game {
         //Begin main loop
         let stepCall = this.step.bind(this);	
         stepCall(0);
+    }
+
+    UseTextEngine() {
+        this.bootstraper.UseTextEngine(this.width, this.height)
+    }
+
+    UseCanvas() {
+        this.drawManager = new DrawManager(this.width, this.height);
     }
 }
