@@ -1,5 +1,6 @@
 class DocumentBootstrap {
 
+    static textContainer = undefined;
     static textOptions = [];
 
     UseCanvas(width, height) {
@@ -21,6 +22,7 @@ class DocumentBootstrap {
         textContainer.setAttribute("id","HeroEngineTextContainer");
         textContainer.setAttribute("style",`width:${width}px; height:${height}px`);
         container.appendChild(textContainer);
+        DocumentBootstrap.textContainer = textContainer;
 
         //Create OptionContainer
         let optionContainer = document.createElement("div");
@@ -30,17 +32,22 @@ class DocumentBootstrap {
 
         //Create Options
         let optionOne = document.createElement("button");
-        optionOne.setAttribute("id","HeroOptionOne")
+        optionOne.setAttribute("id","HeroOptionOne");
+        optionOne.style.display = "none";
         optionContainer.appendChild(optionOne);
         let optionTwo = document.createElement("button");
-        optionTwo.setAttribute("id","HeroOptionTwo")
+        optionTwo.setAttribute("id","HeroOptionTwo");
+        optionTwo.style.display = "none";
         optionContainer.appendChild(optionTwo);
         let optionThree = document.createElement("button");
-        optionThree.setAttribute("id","HeroOptionThree")
+        optionThree.setAttribute("id","HeroOptionThree");
+        optionThree.style.display = "none";
         optionContainer.appendChild(optionThree);
         let optionFour = document.createElement("button");
-        optionFour.setAttribute("id","HeroOptionFour")
+        optionFour.setAttribute("id","HeroOptionFour");
+        optionFour.style.display = "none";
         optionContainer.appendChild(optionFour);
+
 
         DocumentBootstrap.textOptions[0] = optionOne;
         DocumentBootstrap.textOptions[1] = optionTwo;
@@ -48,7 +55,16 @@ class DocumentBootstrap {
         DocumentBootstrap.textOptions[3] = optionFour;
     }
 
-    static TextOptions() {
+    static setOptions(options, dialogueSet) {
+        for (var i = 0; i < DocumentBootstrap.textOptions.length; i++) {
+                DocumentBootstrap.textOptions[i].innerHTML = options[i].text;
+                DocumentBootstrap.addEventClick(DocumentBootstrap.textOptions[i],i);
+        }
+    }
 
+    static addEventClick(obj, i) {
+        obj.addEventListener("click", function(){
+            console.log(i);
+        });
     }
 }

@@ -5,7 +5,7 @@ class TypeWriter {
         this.type.style.position = 'absolute';
         this.type.style.top = y + 'px';
         this.type.style.left = x + 'px';
-        document.getElementById("heroEngineContainer").appendChild(this.type);
+        DocumentBootstrap.textContainer.appendChild(this.type);
     }
 
     addChar(textChar, type){

@@ -1,10 +1,12 @@
 class DialogueNode {
-    constructor(nodeText, speed, events) {
+    constructor(nodeText, options, speed, events) {
     this.speed = speed;
     this.tickCount = 0;
     this.index = 0;
     this.finished = false;
     this.events = events;
+
+    this.options = options;
 
     this.typeWriter = new TypeWriter(0,20);
     this.queue = this.parseText(nodeText);
@@ -21,9 +23,9 @@ class DialogueNode {
                 this.tickCount = 0;
                 this.index++;
             }
-            else {
+            else if (!this.finished) {
                 this.finished = true;
-                this.events.emitEvent("NODEEND");
+                this.events.emitEvent("NODEEND", this.options);
             }
         }
     }

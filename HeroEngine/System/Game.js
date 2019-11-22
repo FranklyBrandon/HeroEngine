@@ -4,7 +4,8 @@ class Game {
         this.width = width;
         this.height = height
         this.bootstraper = new DocumentBootstrap(height, width);
-
+        this.bootstraper.UseCanvas(this.width, this.height);
+        this.drawManager = new DrawManager(this.width, this.height);
         this.events = new EventEmitter();
 
         this.events.registerEvent('STEP');
@@ -68,9 +69,5 @@ class Game {
 
     UseTextEngine() {
         this.bootstraper.UseTextEngine(this.width, this.height)
-    }
-
-    UseCanvas() {
-        this.drawManager = new DrawManager(this.width, this.height);
     }
 }
