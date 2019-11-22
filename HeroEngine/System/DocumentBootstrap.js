@@ -56,15 +56,12 @@ class DocumentBootstrap {
     }
 
     static setOptions(options, dialogueSet) {
-        for (var i = 0; i < DocumentBootstrap.textOptions.length; i++) {
+        for (let i = 0; i < DocumentBootstrap.textOptions.length; i++) {
                 DocumentBootstrap.textOptions[i].innerHTML = options[i].text;
-                DocumentBootstrap.addEventClick(DocumentBootstrap.textOptions[i],i);
+                DocumentBootstrap.textOptions[i].addEventListener("click", function(){
+                    //TODO: use options[i].ref to call dialogueset setNode
+                    console.log(i);
+                });
         }
-    }
-
-    static addEventClick(obj, i) {
-        obj.addEventListener("click", function(){
-            console.log(i);
-        });
     }
 }
